@@ -1,0 +1,2023 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     78997,       2015]
+NotebookOptionsPosition[     70778,       1883]
+NotebookOutlinePosition[     71169,       1900]
+CellTagsIndexPosition[     71126,       1897]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.765102691560028*^9, 3.765102693394953*^9}, {
+  3.765102729445394*^9, 
+  3.765102730701564*^9}},ExpressionUUID->"63dab780-b100-4b69-9c67-\
+10acd00b07d3"],
+
+Cell[BoxData[
+ RowBox[{"Print", "[", 
+  "\"\<Problem:  When defining a function inside Module, it is often not \
+recognized as a function.\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.765106695970162*^9, 3.7651067061081057`*^9}, {
+  3.765106749562705*^9, 
+  3.76510678003968*^9}},ExpressionUUID->"3f22a9fd-47b5-45d6-beeb-\
+1c744bd509b7"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Minimum Working Examples and Workaround",
+ FontColor->RGBColor[1, 0, 0]]], "Section",
+ CellChangeTimes->{{3.7384039033250647`*^9, 3.7384039095263643`*^9}, 
+   3.7384042394074717`*^9, {3.738406695464067*^9, 3.738406699136009*^9}, {
+   3.7384068847910023`*^9, 3.7384068906466017`*^9}, {3.740310753819174*^9, 
+   3.7403107699224*^9}, {3.761897946758169*^9, 3.761897957613974*^9}, {
+   3.7618979923169527`*^9, 3.761897995148902*^9}, {3.762009263473727*^9, 
+   3.762009296031787*^9}, {3.762154673711314*^9, 3.762154675341291*^9}, {
+   3.764599638419145*^9, 3.764599676593161*^9}, {3.7650156784043384`*^9, 
+   3.765015688575556*^9}, {3.765102704814582*^9, 3.7651027413251047`*^9}, {
+   3.765106682653915*^9, 
+   3.765106685508438*^9}},ExpressionUUID->"a613d7a5-9b1b-49a2-a1ce-\
+95127ff57ae2"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+We learned about Module:  if you have a local variable such as
+$abc = 10 + x$,
+
+which \[OpenCurlyDoubleQuote]depends\[CloseCurlyDoubleQuote] on x, MM does \
+not consider this $x$ to be a variable in the sense that it can be used for a \
+function definition
+f[x_] = abc (*)
+
+MM will, e.g., output
+$ f[y]
+-->  10 + x.
+
+-------
+(*) However, it\[CloseCurlyQuote]s alright to do
+f[abc_]=abc
+-------\
+\>", "Subsection",
+ CellChangeTimes->{{3.76510350451087*^9, 3.7651035175907097`*^9}, {
+  3.765103735067627*^9, 3.765103912498846*^9}, {3.765104603259233*^9, 
+  3.765104625409404*^9}, {3.765104666430984*^9, 3.765104695853566*^9}, {
+  3.7651048263212547`*^9, 
+  3.765104834071899*^9}},ExpressionUUID->"abcb9f41-bd7f-4085-8a64-\
+7ea20dd7da69"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.765104821256464*^9},ExpressionUUID->"0c9bfa77-2501-4a3a-8e21-\
+ce50a1441332"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["x"], "Input",
+ CellChangeTimes->{
+  3.765109861831966*^9},ExpressionUUID->"5090a9b5-2d34-43f7-bd45-\
+758ccc728991"],
+
+Cell[BoxData["x"], "Output",
+ CellChangeTimes->{
+  3.765109862161357*^9},ExpressionUUID->"e34a4be0-aa2f-4466-b553-\
+c53f3beb20fc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"abcd", "=", 
+  RowBox[{
+   RowBox[{"2", "x"}], "+", "1"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", "x_", "]"}], "=", "abcd"}], "\[IndentingNewLine]", 
+ RowBox[{"f", "[", "y", "]"}]}], "Input",
+ CellChangeTimes->{{3.7651099048198967`*^9, 
+  3.765109939405089*^9}},ExpressionUUID->"d4f98750-cbea-4711-94f0-\
+d4cffb903a82"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"2", " ", "x"}]}]], "Output",
+ CellChangeTimes->{{3.765109925461441*^9, 
+  3.76510993986528*^9}},ExpressionUUID->"6790cf5c-3b95-49f9-9fe4-\
+54063d3d950a"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"2", " ", "x"}]}]], "Output",
+ CellChangeTimes->{{3.765109925461441*^9, 
+  3.765109939877811*^9}},ExpressionUUID->"b35473d0-fc00-4a61-84b8-\
+2a8bfcd1663f"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"2", " ", "y"}]}]], "Output",
+ CellChangeTimes->{{3.765109925461441*^9, 
+  3.7651099398861847`*^9}},ExpressionUUID->"20f98022-27fa-49b6-bf96-\
+7de39f27cb41"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"workaround", ":", "  ", 
+    RowBox[{"use", " ", "\"\<intermediate\>\""}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "y_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"abc", ",", "ff"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"abc", "=", 
+        RowBox[{
+         RowBox[{"2", "x"}], "+", "1"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"without", " ", "intermediate", " ", 
+         RowBox[{"there", "'"}], "s", " ", "a", " ", "problem"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"intermediate", "=", "abc"}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"ff", "[", "x_", "]"}], "=", "intermediate"}], ";"}], 
+        "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", "problematic", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ff", "[", "x_", "]"}], "=", "abc"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"ff", "[", "y", "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.765103191235703*^9, 3.765103289523006*^9}, {
+   3.7651033264883823`*^9, 3.765103349719626*^9}, {3.765103527487257*^9, 
+   3.765103602954958*^9}, {3.765103699718239*^9, 3.765103726324471*^9}, 
+   3.765104575380782*^9, {3.765104628539135*^9, 3.765104654351832*^9}, {
+   3.765104713021747*^9, 3.765104769283334*^9}, {3.7651048009540377`*^9, 
+   3.7651048047204742`*^9}, {3.765104942258843*^9, 3.765104952873734*^9}, {
+   3.765105004791685*^9, 3.765105006151065*^9}, {3.765109872417056*^9, 
+   3.765109881023505*^9}, {3.765109971266644*^9, 3.765109989242207*^9}, {
+   3.765110082590646*^9, 3.7651100910128508`*^9}, {3.76511016081073*^9, 
+   3.7651101802836437`*^9}, {3.765110690787693*^9, 
+   3.76511069911942*^9}},ExpressionUUID->"eeaf0ee8-8a2d-4c4f-b353-\
+c65c9e1c647d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.765110096554091*^9, 
+  3.765110098676543*^9}},ExpressionUUID->"b4529355-91bd-4dab-b6e6-\
+af8d0a111f69"],
+
+Cell[BoxData["21"], "Print",
+ CellChangeTimes->{
+  3.7651100991032133`*^9, {3.765110167394492*^9, 
+   3.7651101929507837`*^9}},ExpressionUUID->"53fe6b76-6f1d-4650-bc26-\
+32e4b5470b7b"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.765104924501656*^9},ExpressionUUID->"5348f64d-b05b-40d0-b635-\
+19e9c8ffbfb7"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.76510272788993*^9, 
+  3.765102890069374*^9},ExpressionUUID->"4e26f165-be47-444f-8b88-\
+1f82f0bd53ed"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.765102888956669*^9},ExpressionUUID->"2ae1f99b-e61c-4e1f-9b8a-\
+27ac4a8adb7a"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.765102886826992*^9, 
+  3.765102886973946*^9}},ExpressionUUID->"86a88942-c78f-4ea4-9412-\
+1debed50e11a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Examples Close to M[] and MDynamic[]",
+ FontColor->RGBColor[1, 0, 0]]], "Section",
+ CellChangeTimes->{{3.7384039033250647`*^9, 3.7384039095263643`*^9}, 
+   3.7384042394074717`*^9, {3.738406695464067*^9, 3.738406699136009*^9}, {
+   3.7384068847910023`*^9, 3.7384068906466017`*^9}, {3.740310753819174*^9, 
+   3.7403107699224*^9}, {3.761897946758169*^9, 3.761897957613974*^9}, {
+   3.7618979923169527`*^9, 3.761897995148902*^9}, {3.762009263473727*^9, 
+   3.762009296031787*^9}, {3.762154673711314*^9, 3.762154675341291*^9}, {
+   3.764599638419145*^9, 3.764599676593161*^9}, {3.7650156784043384`*^9, 
+   3.765015688575556*^9}, {3.765102704814582*^9, 
+   3.76510272355788*^9}},ExpressionUUID->"e219f9e8-fe8c-445a-b47d-\
+62f5884d474f"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+   "This", " ", "function", " ", "should", " ", "*", "not", "*", " ", 
+    "work"}], ",", " ", 
+   RowBox[{
+   "unless", " ", "we", " ", "remove", " ", "\"\<myHamiltonian\>\"", " ", 
+    "from", " ", "list", " ", "of", " ", "local", " ", 
+    RowBox[{"variables", "."}]}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.765102867134605*^9, 
+  3.765102880638425*^9}},ExpressionUUID->"a8a56398-03e0-4af3-ac13-\
+6169b648e4dd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"min", "[", 
+    RowBox[{"HH_", ",", "max_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "i", ",", "myHamiltonian", ",", "myHamiltonianCutOff", ",", "toZeroL", 
+       ",", "setZeroL", ",", 
+       RowBox[{"out", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{"verbose", ",", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<\\n Starting M[HH,max] @ \>\"", ",", 
+           RowBox[{
+            RowBox[{"Date", "[", "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ";;", "5"}], "]"}], "]"}], ",", " ", 
+           "\"\<, for maximal order = \>\"", ",", "max"}], "]"}]}], "]"}], 
+       ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Clear", "[", 
+       RowBox[{"Omega", ",", "fxn"}], "]"}], ";", 
+      RowBox[{"Clear", "[", "\"\<Subscript\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"maxxi", "=", "max"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"myHamiltonian", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"HH", "//", "NCExpand"}], ")"}], "//.", 
+        "SigmaSmartRules"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<\\n\\ninput myHamiltonian = \>\"", ",", "myHamiltonian"}],
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"myHamiltonianCutOff", "=", 
+       RowBox[{"sTrim", "[", 
+        RowBox[{"myHamiltonian", ",", 
+         RowBox[{"maxxi", "+", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<\\n My Hamiltonian = \>\"", ",", "myHamiltonianCutOff", ",", 
+        "\"\<\\n\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<fff[ttt,1] = \>\"", ",", 
+        RowBox[{
+         RowBox[{"fff", "[", 
+          RowBox[{"ttt", ",", "1"}], "]"}], "/.", 
+         RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"initialize", " ", "the", " ", "first", " ", "integrand"}], 
+        ",", " ", 
+        RowBox[{"fxn", "[", 
+         RowBox[{"t", ",", "1"}], "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"fxn", "[", 
+        RowBox[{"t_", ",", "1"}], "]"}], "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fff", "[", 
+          RowBox[{"t", ",", "1"}], "]"}], "/.", 
+         RowBox[{"h", "\[Rule]", "myHamiltonian"}]}], "//", "Expand"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<fxn[ttt,1] = \>\"", ",", 
+        RowBox[{"fxn", "[", 
+         RowBox[{"ttt", ",", "1"}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.765100707092492*^9, 3.765100758633629*^9}, {
+   3.765100806000371*^9, 3.765100806623145*^9}, {3.765100881995428*^9, 
+   3.7651009171296463`*^9}, {3.7651010055919123`*^9, 
+   3.7651010086866426`*^9}, {3.765101054203023*^9, 3.765101061172022*^9}, 
+   3.765101173486478*^9, 
+   3.765102863799827*^9},ExpressionUUID->"45400f0b-cb0b-46c8-8c49-\
+330181d655bd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"min", "[", 
+  RowBox[{
+   RowBox[{"H", "[", "t", "]"}], ",", "1"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"mini2", "[", 
+  RowBox[{"H", "[", "t", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7651007657423153`*^9, 3.7651007774638453`*^9}, {
+  3.765100810654619*^9, 
+  3.765100827829178*^9}},ExpressionUUID->"05fd6294-e02d-43a7-a521-\
+45b4662d080c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n\\ninput myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm[
+  "\n\ninput myHamiltonian = ", 
+   Rational[1, 2] $CellContext`Delta $CellContext`sz + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175060853*^9},ExpressionUUID->"19d81596-035b-4694-b2cc-\
+3f2af421573b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "\n My Hamiltonian = ", $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]), "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175071103*^9},ExpressionUUID->"bd8c8111-5936-4906-aa05-\
+2dfe37faa18d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "fff[ttt,1] = ", 
+   Complex[0, -1] $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.7651011750831213`*^9},ExpressionUUID->"3ad1b5f6-5a55-411a-b0b8-\
+3d2836054023"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], " ", "\[ImaginaryI]", " ", "Delta", " ", 
+     "sz"}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 2]] $CellContext`Delta $CellContext`sz + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww] + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.7651011750945463`*^9},ExpressionUUID->"28fd9891-0fcc-4bb6-b033-\
+17a7bb1ae2a9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n\\ninput myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm[
+  "\n\ninput myHamiltonian = ", 
+   Rational[1, 2] $CellContext`Delta $CellContext`sz + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175106422*^9},ExpressionUUID->"77f2f47a-6898-4415-890a-\
+726e9ce231c9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\nMy Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "\nMy Hamiltonian = ", $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]), "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175118424*^9},ExpressionUUID->"454538e9-53d3-4d1a-9942-\
+42d8ed983cf8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "fff[ttt,1] = ", 
+   Complex[0, -1] $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175127761*^9},ExpressionUUID->"b5a3d818-15ef-45f6-81cb-\
+ffc3008083b9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", 
+     " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww] + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100777838456*^9, {3.7651008081590652`*^9, 3.765100832225072*^9}, 
+   3.765100884216278*^9, {3.765100918359033*^9, 3.765100952903372*^9}, 
+   3.765101012882804*^9, 
+   3.765101175136897*^9},ExpressionUUID->"bc47b709-9481-45ad-a36e-\
+f7e56c70003d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.765100784152162*^9, 
+  3.765100784279405*^9}},ExpressionUUID->"f4574067-af66-4918-a811-\
+d2e95a2aa0d5"],
+
+Cell[BoxData[
+ RowBox[{"Print", "[", "\"\<The functions below seem to work.\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7651007860596123`*^9, 
+  3.765100796142968*^9}},ExpressionUUID->"efe0dd82-7686-4557-8dec-\
+7aa2fe07faf6"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7650970054335623`*^9},ExpressionUUID->"579d1988-8e3d-4054-8c8c-\
+049936d6e711"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"mini", "[", 
+     RowBox[{"HH_", ",", "max_", ",", "t2_", ",", "t1_", ",", 
+      RowBox[{"wwMax_:", "0"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "i", ",", "wwMaxArray", ",", "myHamiltonian", ",", 
+        "myHamiltonianCutOff", ",", 
+        RowBox[{"out", "=", "0"}]}], "}"}], ","}]}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mini", "[", 
+     RowBox[{"HH_", ",", "max_", ",", "t2_", ",", "t1_", ",", 
+      RowBox[{"wwMax_:", "0"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{"(*", 
+      RowBox[{"{", 
+       RowBox[{
+       "i", ",", "wwMaxArray", ",", "myHamiltonian", ",", 
+        "myHamiltonianCutOff", ",", 
+        RowBox[{"out", "=", "0"}]}], "}"}], "*)"}], 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{"verboseLight", ",", 
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<\\n [ver-boseLight]  Starting MDynamic[HH,max] @ \>\"", ",", 
+           RowBox[{
+            RowBox[{"Date", "[", "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ";;", "5"}], "]"}], "]"}], ",", " ", 
+           "\"\<, for maximal order = \>\"", ",", "max"}], "]"}]}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"myHamiltonian", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"HH", "//", "NCExpand"}], ")"}], "//.", 
+         "SigmaSmartRules"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Clear", "[", 
+          RowBox[{"Omega", ",", "fxn"}], "]"}], ";", 
+         RowBox[{"Clear", "[", "\"\<Subscript\>\"", "]"}], ";"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"maxxi", "=", "1"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<input myHamiltonian = \>\"", ",", "myHamiltonian"}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"myHamiltonianCutOff", "=", 
+        RowBox[{"sTrim", "[", 
+         RowBox[{"myHamiltonian", ",", 
+          RowBox[{"maxxi", "+", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<My Hamiltonian = \>\"", ",", "myHamiltonianCutOff", ",", 
+         "\"\<\\n\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<fff[ttt,1] = \>\"", ",", 
+         RowBox[{
+          RowBox[{"fff", "[", 
+           RowBox[{"ttt", ",", "1"}], "]"}], "/.", 
+          RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fxn", "[", 
+           RowBox[{"t_", ",", "1"}], "]"}], "=", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"fff", "[", 
+              RowBox[{"t", ",", "1"}], "]"}], "/.", 
+             RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+            "Expand"}], "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fxn", "[", 
+           RowBox[{"t_", ",", "1"}], "]"}], "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"fff", "[", 
+             RowBox[{"t", ",", "1"}], "]"}], "/.", 
+            RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+           "Expand"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fxn", "[", 
+         RowBox[{"t_", ",", "1"}], "]"}], "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fff", "[", 
+           RowBox[{"t", ",", "1"}], "]"}], "/.", 
+          RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+         "Expand"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<fxn[ttt,1] = \>\"", ",", 
+         RowBox[{"fxn", "[", 
+          RowBox[{"ttt", ",", "1"}], "]"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.765097009764044*^9, 3.7650970895685062`*^9}, 
+   3.765097373123942*^9, {3.765097539489979*^9, 3.7650975499222517`*^9}, {
+   3.765097604528083*^9, 3.765097604751692*^9}, {3.765097726362111*^9, 
+   3.765097796277766*^9}, {3.765099654801682*^9, 3.765099693499075*^9}, {
+   3.765099822244417*^9, 3.765099900241171*^9}, {3.765099936798698*^9, 
+   3.765099962613551*^9}, {3.7651008597744017`*^9, 3.765100870148273*^9}, {
+   3.765100936073197*^9, 
+   3.765100936433652*^9}},ExpressionUUID->"3eea2c0f-3491-441c-b4f2-\
+b37e8962631c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"simpl", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Delta", "\[Rule]", "0"}], ",", 
+     RowBox[{"phi", "\[Rule]", "0"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"H10", "[", "t_", "]"}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+       RowBox[{
+        FractionBox["1", "4"], " ", "H1", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"sx", " ", 
+           RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+          RowBox[{"sx", " ", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"phi", "+", 
+             RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+          RowBox[{"sy", " ", 
+           RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+          RowBox[{"sy", " ", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"phi", "+", 
+             RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"H1D", "\[Rule]", "0"}], ",", 
+        RowBox[{"H1DD", "\[Rule]", "0"}], ",", 
+        RowBox[{"H1DDD", "\[Rule]", "0"}]}], "}"}]}], "/.", "simpl"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "take", " ", "care", " ", "of", " ", "this", " ", "just", " ", "before", 
+     " ", "the", " ", "actual", " ", 
+     RowBox[{"compuration", ":", "  ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"/.", 
+         RowBox[{"phi", "\[Rule]", "0"}]}], "/.", 
+        RowBox[{"Delta", "\[Rule]", "0"}]}], "}"}]}]}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"H1DD", "\[Rule]", "0"}], ",", 
+      RowBox[{"H1D", "\[Rule]", 
+       RowBox[{"0", "*"}]}], ",", " ", 
+      RowBox[{"etc", "."}]}], "}"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"H10", "[", "tt", "]"}]}], "Input",
+ CellChangeTimes->{{3.765097224177459*^9, 3.765097282072974*^9}, {
+   3.765097386722183*^9, 3.765097389081921*^9}, 3.765097506988585*^9, {
+   3.765097612750861*^9, 3.765097628942245*^9}, {3.765097659038246*^9, 
+   3.7650976594767933`*^9}, 
+   3.765099793509357*^9},ExpressionUUID->"8a8d083b-bfbc-4b02-97f5-\
+abd08111a6a9"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "4"], " ", "H1", " ", 
+  RowBox[{"(", 
+   RowBox[{"sx", "+", 
+    RowBox[{"sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"2", " ", "tt", " ", "ww"}], "]"}]}], "-", 
+    RowBox[{"sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", "tt", " ", "ww"}], "]"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.765097629768689*^9, 3.765097660109145*^9, 3.7650977347471323`*^9, 
+   3.765097797862608*^9, {3.7650996679546843`*^9, 3.76509969695903*^9}, 
+   3.7650997943694963`*^9, 3.765099836670259*^9, 3.765099902389629*^9, {
+   3.765099943670833*^9, 3.7650999636697617`*^9}, 
+   3.765100141521244*^9},ExpressionUUID->"a13cf57e-f4a6-41e5-9991-\
+5cf987ec9d4b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mini", "[", 
+  RowBox[{
+   RowBox[{"H", "[", "tt", "]"}], ",", "0", ",", "t2", ",", "t1"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.765097093725011*^9, 3.765097117830284*^9}, {
+   3.76509733321208*^9, 3.7650973373799343`*^9}, 3.765097638453401*^9, {
+   3.7650976722275667`*^9, 3.765097672682933*^9}, 
+   3.765099796446123*^9},ExpressionUUID->"489e962f-d6f4-427b-baf5-\
+b12f1a1d8efc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"input myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm[
+  "input myHamiltonian = ", Rational[1, 2] $CellContext`Delta $CellContext`sz + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651004437108183`*^9},ExpressionUUID->"46421685-8cf8-4c76-aecd-\
+8280fbe5ac87"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "My Hamiltonian = ", $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]), "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100443717008*^9},ExpressionUUID->"acbd41c4-607c-4d0f-88ef-\
+54c10ca00d29"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"fxn", "[", "ttt", "]"}]}],
+  SequenceForm["fxn[ttt] = ", 
+   $CellContext`fxn[$CellContext`ttt]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651004437249117`*^9},ExpressionUUID->"f83cbc9a-9d17-4ff5-92a1-\
+d0c9926e99c5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "fff[ttt,1] = ", 
+   Complex[0, -1] $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100443733955*^9},ExpressionUUID->"39fc0b56-63e0-4cc9-95a1-\
+9cb9231dd59f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", 
+     " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100443743136*^9},ExpressionUUID->"81d03b73-ecf4-4885-9686-\
+87bbfa0472d9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mini", "[", 
+  RowBox[{
+   RowBox[{"H", "[", "tt", "]"}], ",", "0", ",", "t2", ",", "t1"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.765097093725011*^9, 3.765097117830284*^9}, {
+   3.76509733321208*^9, 3.7650973373799343`*^9}, 3.765097638453401*^9, {
+   3.7650976722275667`*^9, 3.765097672682933*^9}, 
+   3.765099796446123*^9},ExpressionUUID->"093ba969-d5e7-47c0-86d4-\
+6f89e1b51a56"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"input myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm[
+  "input myHamiltonian = ", Rational[1, 2] $CellContext`Delta $CellContext`sz + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.765097109220047*^9, 3.7650971192601223`*^9}, {
+   3.765097315738484*^9, 3.7650973376946793`*^9}, 3.765097391030664*^9, 
+   3.765097509491445*^9, 3.765097559527596*^9, {3.7650976333353977`*^9, 
+   3.765097672981802*^9}, 3.765097735446808*^9, {3.7650977683435163`*^9, 
+   3.765097798277259*^9}, 3.765099668674316*^9, 3.765099699361271*^9, 
+   3.7650997969732857`*^9, 3.765099837722108*^9, 3.765099903205587*^9, {
+   3.76509994422091*^9, 3.765099963999875*^9}, 
+   3.765100142723905*^9},ExpressionUUID->"ff45c21a-c4bb-44e0-8a91-\
+3616e6ab0646"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "My Hamiltonian = ", $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]), "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.765097109220047*^9, 3.7650971192601223`*^9}, {
+   3.765097315738484*^9, 3.7650973376946793`*^9}, 3.765097391030664*^9, 
+   3.765097509491445*^9, 3.765097559527596*^9, {3.7650976333353977`*^9, 
+   3.765097672981802*^9}, 3.765097735446808*^9, {3.7650977683435163`*^9, 
+   3.765097798277259*^9}, 3.765099668674316*^9, 3.765099699361271*^9, 
+   3.7650997969732857`*^9, 3.765099837722108*^9, 3.765099903205587*^9, {
+   3.76509994422091*^9, 3.765099963999875*^9}, 
+   3.765100142733067*^9},ExpressionUUID->"9c4b20a3-6912-46e9-83d3-\
+6e00eb68d6fe"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"fxn", "[", "ttt", "]"}]}],
+  SequenceForm["fxn[ttt] = ", 
+   $CellContext`fxn[$CellContext`ttt]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.765097109220047*^9, 3.7650971192601223`*^9}, {
+   3.765097315738484*^9, 3.7650973376946793`*^9}, 3.765097391030664*^9, 
+   3.765097509491445*^9, 3.765097559527596*^9, {3.7650976333353977`*^9, 
+   3.765097672981802*^9}, 3.765097735446808*^9, {3.7650977683435163`*^9, 
+   3.765097798277259*^9}, 3.765099668674316*^9, 3.765099699361271*^9, 
+   3.7650997969732857`*^9, 3.765099837722108*^9, 3.765099903205587*^9, {
+   3.76509994422091*^9, 3.765099963999875*^9}, 
+   3.765100142740984*^9},ExpressionUUID->"9dbeb1bd-8c7b-46b5-911c-\
+7d652f16121f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "fff[ttt,1] = ", 
+   Complex[0, -1] $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.765097109220047*^9, 3.7650971192601223`*^9}, {
+   3.765097315738484*^9, 3.7650973376946793`*^9}, 3.765097391030664*^9, 
+   3.765097509491445*^9, 3.765097559527596*^9, {3.7650976333353977`*^9, 
+   3.765097672981802*^9}, 3.765097735446808*^9, {3.7650977683435163`*^9, 
+   3.765097798277259*^9}, 3.765099668674316*^9, 3.765099699361271*^9, 
+   3.7650997969732857`*^9, 3.765099837722108*^9, 3.765099903205587*^9, {
+   3.76509994422091*^9, 3.765099963999875*^9}, 
+   3.765100142749642*^9},ExpressionUUID->"ed47e17c-8481-4dce-a3d8-\
+d93f8cfcc471"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", 
+     " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "tt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`tt $CellContext`ww] + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`tt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.765097109220047*^9, 3.7650971192601223`*^9}, {
+   3.765097315738484*^9, 3.7650973376946793`*^9}, 3.765097391030664*^9, 
+   3.765097509491445*^9, 3.765097559527596*^9, {3.7650976333353977`*^9, 
+   3.765097672981802*^9}, 3.765097735446808*^9, {3.7650977683435163`*^9, 
+   3.765097798277259*^9}, 3.765099668674316*^9, 3.765099699361271*^9, 
+   3.7650997969732857`*^9, 3.765099837722108*^9, 3.765099903205587*^9, {
+   3.76509994422091*^9, 3.765099963999875*^9}, 
+   3.765100142757741*^9},ExpressionUUID->"0066f061-4e3a-4eb7-bd31-\
+48f32c0b6ab5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fff", "[", 
+  RowBox[{"t", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.765097340807781*^9, 
+  3.765097354923691*^9}},ExpressionUUID->"e307ec7b-62b6-4bdc-8d71-\
+1bd33a1a6de3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "\[ImaginaryI]"}], " ", "h"}]], "Output",
+ CellChangeTimes->{{3.765097343797304*^9, 3.765097355443078*^9}, 
+   3.7650976629492893`*^9},ExpressionUUID->"7019e5a4-2b0d-42b0-ae01-\
+6b80a59d5a9c"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7651000088810673`*^9, 
+  3.765100009217928*^9}},ExpressionUUID->"3a761c9a-9450-4d38-9c83-\
+e1d53acb3bd9"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7651000097610817`*^9},ExpressionUUID->"c8146bb2-9743-49c6-8404-\
+6e82d6f7931d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"mini", "[", 
+     RowBox[{"HH_", ",", "max_", ",", "t2_", ",", "t1_", ",", 
+      RowBox[{"wwMax_:", "0"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "i", ",", "wwMaxArray", ",", "myHamiltonian", ",", 
+        "myHamiltonianCutOff", ",", 
+        RowBox[{"out", "=", "0"}]}], "}"}], ","}]}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mini", "[", 
+     RowBox[{"HH_", ",", "max_", ",", "t2_", ",", "t1_", ",", 
+      RowBox[{"wwMax_:", "0"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{"(*", 
+      RowBox[{"{", 
+       RowBox[{
+       "i", ",", "wwMaxArray", ",", "myHamiltonian", ",", 
+        "myHamiltonianCutOff", ",", 
+        RowBox[{"out", "=", "0"}]}], "}"}], "*)"}], 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{"verboseLight", ",", 
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<\\n [ver-boseLight]  Starting MDynamic[HH,max] @ \>\"", ",", 
+           RowBox[{
+            RowBox[{"Date", "[", "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ";;", "5"}], "]"}], "]"}], ",", " ", 
+           "\"\<, for maximal order = \>\"", ",", "max"}], "]"}]}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"myHamiltonian", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"HH", "//", "NCExpand"}], ")"}], "//.", 
+         "SigmaSmartRules"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Clear", "[", 
+          RowBox[{"Omega", ",", "fxn"}], "]"}], ";", 
+         RowBox[{"Clear", "[", "\"\<Subscript\>\"", "]"}], ";"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"maxxi", "=", "1"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<input myHamiltonian = \>\"", ",", "myHamiltonian"}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"myHamiltonianCutOff", "=", 
+        RowBox[{"sTrim", "[", 
+         RowBox[{"myHamiltonian", ",", 
+          RowBox[{"maxxi", "+", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<My Hamiltonian = \>\"", ",", "myHamiltonianCutOff", ",", 
+         "\"\<\\n\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<fxn[ttt] = \>\"", ",", 
+           RowBox[{"fxn", "[", "ttt", "]"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<fff[ttt,1] = \>\"", ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"fff", "[", 
+              RowBox[{"ttt", ",", "1"}], "]"}], "/.", 
+             RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "/.", 
+            RowBox[{"tt", "\[Rule]", "t"}]}]}], "]"}], ";"}], "*)"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fxn", "[", 
+           RowBox[{"t_", ",", "1"}], "]"}], "=", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"fff", "[", 
+              RowBox[{"t", ",", "1"}], "]"}], "/.", 
+             RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+            "Expand"}], "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fxn", "[", 
+           RowBox[{"t_", ",", "1"}], "]"}], "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"fff", "[", 
+             RowBox[{"t", ",", "1"}], "]"}], "/.", 
+            RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+           "Expand"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fxn", "[", 
+         RowBox[{"t_", ",", "1"}], "]"}], "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fff", "[", 
+           RowBox[{"t", ",", "1"}], "]"}], "/.", 
+          RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+         "Expand"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<fxn[ttt,1] = \>\"", ",", 
+         RowBox[{"fxn", "[", 
+          RowBox[{"ttt", ",", "1"}], "]"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.765097009764044*^9, 3.7650970895685062`*^9}, 
+   3.765097373123942*^9, {3.765097539489979*^9, 3.7650975499222517`*^9}, {
+   3.765097604528083*^9, 3.765097604751692*^9}, {3.765097726362111*^9, 
+   3.765097796277766*^9}, {3.765099654801682*^9, 3.765099693499075*^9}, {
+   3.765099822244417*^9, 3.765099900241171*^9}, {3.765099936798698*^9, 
+   3.765099962613551*^9}, {3.765100581025674*^9, 
+   3.765100581617989*^9}},ExpressionUUID->"780fc216-2e6b-4c28-a468-\
+f11a0c331dfe"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mini", "[", 
+  RowBox[{
+   RowBox[{"H", "[", "t", "]"}], ",", "0", ",", "t2", ",", "t1"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.765097093725011*^9, 3.765097117830284*^9}, {
+   3.76509733321208*^9, 3.7650973373799343`*^9}, 3.765097638453401*^9, {
+   3.7650976722275667`*^9, 3.765097672682933*^9}, 3.765099796446123*^9, 
+   3.765100602744685*^9},ExpressionUUID->"a35f973e-cd11-4d92-bf74-\
+b1ab1488e008"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"input myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm[
+  "input myHamiltonian = ", Rational[1, 2] $CellContext`Delta $CellContext`sz + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651004670961733`*^9, {3.76510059923201*^9, 
+   3.7651006081549664`*^9}},ExpressionUUID->"4cb386c1-38d2-498c-bce1-\
+f8a92f596542"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "My Hamiltonian = ", $CellContext`H1 (
+    Rational[1, 4] $CellContext`sx Cos[$CellContext`phi] + 
+    Rational[1, 4] $CellContext`sx 
+     Cos[$CellContext`phi + 2 $CellContext`t $CellContext`ww] + 
+    Rational[1, 4] $CellContext`sy Sin[$CellContext`phi] + 
+    Rational[-1, 4] $CellContext`sy 
+     Sin[$CellContext`phi + 2 $CellContext`t $CellContext`ww]), "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651004670961733`*^9, {3.76510059923201*^9, 
+   3.765100608163686*^9}},ExpressionUUID->"2a8a8104-354b-4926-8b6b-\
+a28c86ae915a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", 
+     " ", 
+     RowBox[{"Cos", "[", "phi", "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"phi", "+", 
+       RowBox[{"2", " ", "ttt", " ", "ww"}]}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx Cos[$CellContext`phi] + 
+   Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww] + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sy Sin[$CellContext`phi] + 
+   Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[$CellContext`phi + 2 $CellContext`ttt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651004670961733`*^9, {3.76510059923201*^9, 
+   3.765100608171908*^9}},ExpressionUUID->"4ded83ce-0783-4b06-8247-\
+7e894a72f334"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.765100609285965*^9},ExpressionUUID->"a15be07b-d12a-4579-982d-\
+5f3fb9c724b3"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.765100680420108*^9, 
+  3.765100680612216*^9}},ExpressionUUID->"b98030a5-fc82-454a-9e08-\
+6d10ec881410"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"mini2", "[", "HH_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"myHamiltonian", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"HH", "//", "NCExpand"}], ")"}], "//.", 
+        "SigmaSmartRules"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Clear", "[", "fxn", "]"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"maxxi", "=", "1"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<\\n\\ninput myHamiltonian = \>\"", ",", "myHamiltonian"}],
+        "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"myHamiltonianCutOff", "=", 
+       RowBox[{"sTrim", "[", 
+        RowBox[{"myHamiltonian", ",", ",", 
+         RowBox[{"maxxi", "+", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<\\nMy Hamiltonian = \>\"", ",", "myHamiltonianCutOff", ",", 
+        "\"\<\\n\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<fff[ttt,1] = \>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"fff", "[", 
+           RowBox[{"ttt", ",", "1"}], "]"}], "/.", 
+          RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "/.", 
+         RowBox[{"tt", "\[Rule]", "t"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fxn", "[", 
+          RowBox[{"t_", ",", "1"}], "]"}], "=", 
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"fff", "[", 
+             RowBox[{"t", ",", "1"}], "]"}], "/.", 
+            RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+           "Expand"}], "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fxn", "[", 
+          RowBox[{"t_", ",", "1"}], "]"}], "=", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"fff", "[", 
+            RowBox[{"t", ",", "1"}], "]"}], "/.", 
+           RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+          "Expand"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"fxn", "[", 
+        RowBox[{"t_", ",", "1"}], "]"}], "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"fff", "[", 
+          RowBox[{"t", ",", "1"}], "]"}], "/.", 
+         RowBox[{"h", "\[Rule]", "myHamiltonianCutOff"}]}], "//", 
+        "Expand"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<fxn[ttt,1] = \>\"", ",", 
+        RowBox[{"fxn", "[", 
+         RowBox[{"ttt", ",", "1"}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.765097009764044*^9, 3.7650970895685062`*^9}, 
+   3.765097373123942*^9, {3.765097539489979*^9, 3.7650975499222517`*^9}, {
+   3.765097604528083*^9, 3.765097604751692*^9}, {3.765097726362111*^9, 
+   3.765097796277766*^9}, {3.765099654801682*^9, 3.765099693499075*^9}, {
+   3.765099822244417*^9, 3.765099900241171*^9}, {3.765099936798698*^9, 
+   3.765099962613551*^9}, {3.765100013074574*^9, 3.765100089685165*^9}, 
+   3.7651001503313293`*^9, {3.7651001851067467`*^9, 3.765100192721507*^9}, {
+   3.765100966775815*^9, 
+   3.765100980478999*^9}},ExpressionUUID->"34ea0a1d-de9a-478c-be22-\
+4d38bdadf166"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"HHH", "=", 
+  RowBox[{"H1", "*", "t"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hhh", "[", "t_", "]"}], "=", 
+  RowBox[{"H1", "*", "t"}]}]}], "Input",
+ CellChangeTimes->{{3.7651001119851418`*^9, 3.7651001186681767`*^9}, {
+  3.7651002147922497`*^9, 
+  3.765100219343562*^9}},ExpressionUUID->"c424ec45-4e9f-4650-a3f7-\
+2396aa105b0c"],
+
+Cell[BoxData[
+ RowBox[{"H1", " ", "t"}]], "Output",
+ CellChangeTimes->{3.765100120837268*^9, 
+  3.765100220633965*^9},ExpressionUUID->"b8a487e6-99b4-483c-9491-\
+72022edbe6ce"],
+
+Cell[BoxData[
+ RowBox[{"H1", " ", "t"}]], "Output",
+ CellChangeTimes->{3.765100120837268*^9, 
+  3.765100220641061*^9},ExpressionUUID->"0a2868be-a3c5-49df-adca-\
+66e51991ac6c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mini2", "[", 
+  RowBox[{"hhh", "[", "t", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.765100094117237*^9, 3.765100124685244*^9}, {
+  3.765100223280239*^9, 
+  3.7651002255910063`*^9}},ExpressionUUID->"42c2b234-99ea-48d2-a766-\
+4581b3f3db76"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"input myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", "t"}]}],
+  SequenceForm["input myHamiltonian = ", $CellContext`H1 $CellContext`t],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7651001000753813`*^9, 3.7651001251655416`*^9}, 
+   3.76510019596068*^9, 
+   3.765100226336938*^9},ExpressionUUID->"88483758-7463-4885-92a1-\
+0bceefc2f2ec"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", "t"}], "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm["My Hamiltonian = ", $CellContext`H1 $CellContext`t, "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7651001000753813`*^9, 3.7651001251655416`*^9}, 
+   3.76510019596068*^9, 
+   3.765100226342156*^9},ExpressionUUID->"37712e1e-8c56-44cb-a679-\
+27a8bd38ca1b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"fxn", "[", "ttt", "]"}]}],
+  SequenceForm["fxn[ttt] = ", 
+   $CellContext`fxn[$CellContext`ttt]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7651001000753813`*^9, 3.7651001251655416`*^9}, 
+   3.76510019596068*^9, 
+   3.7651002263484507`*^9},ExpressionUUID->"5af4e7e8-bec8-4b4c-b05c-\
+9f7cef997fbf"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", "t"}]}],
+  SequenceForm["fff[ttt,1] = ", Complex[0, -1] $CellContext`H1 $CellContext`t],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7651001000753813`*^9, 3.7651001251655416`*^9}, 
+   3.76510019596068*^9, 
+   3.765100226350931*^9},ExpressionUUID->"da7f0fbf-0338-4a7f-acdd-\
+9e9f682b4263"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", "ttt"}]}],
+  SequenceForm[
+  "fxn[ttt,1] = ", Complex[0, -1] $CellContext`H1 $CellContext`ttt],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7651001000753813`*^9, 3.7651001251655416`*^9}, 
+   3.76510019596068*^9, 
+   3.7651002263534803`*^9},ExpressionUUID->"8dc1da3b-3197-4190-bdba-\
+45c574951409"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.765100319712963*^9},ExpressionUUID->"ddc0e07e-d662-4b40-8c94-\
+013f095511c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mini2", "[", 
+  RowBox[{"H10", "[", "t", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.765100094117237*^9, 3.765100124685244*^9}, {
+  3.765100223280239*^9, 3.7651002255910063`*^9}, {3.765100263540956*^9, 
+  3.7651002679247026`*^9}},ExpressionUUID->"02193c32-c568-48d2-af24-\
+53042a25e0de"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"input myHamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"H1", " ", "sx"}], "4"], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}]}]}],
+  SequenceForm[
+  "input myHamiltonian = ", Rational[1, 4] $CellContext`H1 $CellContext`sx + 
+   Rational[1, 4] $CellContext`H1 $CellContext`sx 
+    Cos[2 $CellContext`t $CellContext`ww] + 
+   Rational[-1, 4] $CellContext`H1 $CellContext`sy 
+    Sin[2 $CellContext`t $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651002692823133`*^9},ExpressionUUID->"a7e72ef3-1c4e-4d1a-9dfc-\
+dc64916492d3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My Hamiltonian = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["sx", "4"], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}]}], ")"}]}], 
+   "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm[
+  "My Hamiltonian = ", $CellContext`H1 (Rational[1, 4] $CellContext`sx + 
+    Rational[1, 4] $CellContext`sx Cos[2 $CellContext`t $CellContext`ww] + 
+    Rational[-1, 4] $CellContext`sy Sin[2 $CellContext`t $CellContext`ww]), 
+   "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100269284731*^9},ExpressionUUID->"4d2d3348-f81e-451b-8bfb-\
+a4eb9eaec026"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{"fxn", "[", "ttt", "]"}]}],
+  SequenceForm["fxn[ttt] = ", 
+   $CellContext`fxn[$CellContext`ttt]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651002692895603`*^9},ExpressionUUID->"848a8e4b-f1e1-483e-9d6f-\
+b923fff3eceb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fff[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "H1", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["sx", "4"], "+", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "4"], " ", "sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "fff[ttt,1] = ", 
+   Complex[0, -1] $CellContext`H1 (Rational[1, 4] $CellContext`sx + 
+    Rational[1, 4] $CellContext`sx Cos[2 $CellContext`t $CellContext`ww] + 
+    Rational[-1, 4] $CellContext`sy Sin[2 $CellContext`t $CellContext`ww])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.765100269292261*^9},ExpressionUUID->"240eef58-c01a-479f-b24a-\
+6c00da6fe70c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"fxn[ttt,1] = \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", "H1", " ", "sx"}], 
+    "-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"2", " ", "ttt", " ", "ww"}], "]"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", "\[ImaginaryI]", " ", "H1", " ", "sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", "ttt", " ", "ww"}], "]"}]}]}]}],
+  SequenceForm["fxn[ttt,1] = ", Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx + Complex[0, 
+      Rational[-1, 4]] $CellContext`H1 $CellContext`sx 
+    Cos[2 $CellContext`ttt $CellContext`ww] + Complex[0, 
+      Rational[1, 4]] $CellContext`H1 $CellContext`sy 
+    Sin[2 $CellContext`ttt $CellContext`ww]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7651002692953463`*^9},ExpressionUUID->"6dffda05-11a0-4e33-8dfc-\
+e77bad6a8df5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1751, 944},
+WindowMargins->{{Automatic, 163}, {Automatic, 118}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 376, 7, 352, "Input",ExpressionUUID->"63dab780-b100-4b69-9c67-10acd00b07d3"],
+Cell[937, 29, 337, 7, 59, "Input",ExpressionUUID->"3f22a9fd-47b5-45d6-beeb-1c744bd509b7"],
+Cell[CellGroupData[{
+Cell[1299, 40, 810, 12, 134, "Section",ExpressionUUID->"a613d7a5-9b1b-49a2-a1ce-95127ff57ae2"],
+Cell[CellGroupData[{
+Cell[2134, 56, 745, 23, 849, "Subsection",ExpressionUUID->"abcb9f41-bd7f-4085-8a64-7ea20dd7da69"],
+Cell[2882, 81, 147, 3, 101, "Input",ExpressionUUID->"0c9bfa77-2501-4a3a-8e21-ce50a1441332"],
+Cell[CellGroupData[{
+Cell[3054, 88, 129, 3, 81, "Input",ExpressionUUID->"5090a9b5-2d34-43f7-bd45-758ccc728991"],
+Cell[3186, 93, 130, 3, 89, "Output",ExpressionUUID->"e34a4be0-aa2f-4466-b553-c53f3beb20fc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3353, 101, 361, 9, 164, "Input",ExpressionUUID->"d4f98750-cbea-4711-94f0-d4cffb903a82"],
+Cell[3717, 112, 198, 5, 89, "Output",ExpressionUUID->"6790cf5c-3b95-49f9-9fe4-54063d3d950a"],
+Cell[3918, 119, 199, 5, 89, "Output",ExpressionUUID->"b35473d0-fc00-4a61-84b8-2a8bfcd1663f"],
+Cell[4120, 126, 201, 5, 89, "Output",ExpressionUUID->"20f98022-27fa-49b6-bf96-7de39f27cb41"]
+}, Open  ]],
+Cell[4336, 134, 2117, 46, 552, "Input",ExpressionUUID->"eeaf0ee8-8a2d-4c4f-b353-c65c9e1c647d"],
+Cell[CellGroupData[{
+Cell[6478, 184, 181, 4, 81, "Input",ExpressionUUID->"b4529355-91bd-4dab-b6e6-af8d0a111f69"],
+Cell[6662, 190, 184, 4, 47, "Print",ExpressionUUID->"53fe6b76-6f1d-4650-bc26-32e4b5470b7b"]
+}, Open  ]],
+Cell[6861, 197, 147, 3, 101, "Input",ExpressionUUID->"5348f64d-b05b-40d0-b635-19e9c8ffbfb7"],
+Cell[7011, 202, 149, 3, 59, "Input",ExpressionUUID->"4e26f165-be47-444f-8b88-1f82f0bd53ed"],
+Cell[7163, 207, 147, 3, 101, "Input",ExpressionUUID->"2ae1f99b-e61c-4e1f-9b8a-27ac4a8adb7a"],
+Cell[7313, 212, 206, 4, 142, "Input",ExpressionUUID->"86a88942-c78f-4ea4-9412-1debed50e11a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7568, 222, 754, 11, 134, "Section",ExpressionUUID->"e219f9e8-fe8c-445a-b47d-62f5884d474f"],
+Cell[8325, 235, 471, 12, 101, "Input",ExpressionUUID->"a8a56398-03e0-4af3-ac13-6169b648e4dd"],
+Cell[8799, 249, 3426, 82, 880, "Input",ExpressionUUID->"45400f0b-cb0b-46c8-8c49-330181d655bd"],
+Cell[CellGroupData[{
+Cell[12250, 335, 376, 9, 128, "Input",ExpressionUUID->"05fd6294-e02d-43a7-a521-45b4662d080c"],
+Cell[CellGroupData[{
+Cell[12651, 348, 1564, 37, 192, "Print",ExpressionUUID->"19d81596-035b-4694-b2cc-3f2af421573b"],
+Cell[14218, 387, 1477, 37, 192, "Print",ExpressionUUID->"bd8c8111-5936-4906-aa05-2dfe37faa18d"],
+Cell[15698, 426, 1479, 38, 92, "Print",ExpressionUUID->"3ad1b5f6-5a55-411a-b0b8-3d2836054023"],
+Cell[17180, 466, 1777, 40, 142, "Print",ExpressionUUID->"28fd9891-0fcc-4bb6-b033-17a7bb1ae2a9"],
+Cell[18960, 508, 1564, 37, 192, "Print",ExpressionUUID->"77f2f47a-6898-4415-890a-726e9ce231c9"],
+Cell[20527, 547, 1475, 37, 192, "Print",ExpressionUUID->"454538e9-53d3-4d1a-9942-42d8ed983cf8"],
+Cell[22005, 586, 1477, 38, 92, "Print",ExpressionUUID->"b5a3d818-15ef-45f6-81cb-ffc3008083b9"],
+Cell[23485, 626, 1607, 37, 92, "Print",ExpressionUUID->"bc47b709-9481-45ad-a36e-f7e56c70003d"]
+}, Open  ]]
+}, Open  ]],
+Cell[25119, 667, 206, 4, 180, "Input",ExpressionUUID->"f4574067-af66-4918-a811-d2e95a2aa0d5"],
+Cell[25328, 673, 229, 5, 74, "Input",ExpressionUUID->"efe0dd82-7686-4557-8dec-7aa2fe07faf6"],
+Cell[25560, 680, 149, 3, 128, "Input",ExpressionUUID->"579d1988-8e3d-4054-8c8c-049936d6e711"],
+Cell[25712, 685, 4770, 119, 1168, "Input",ExpressionUUID->"3eea2c0f-3491-441c-b4f2-b37e8962631c"],
+Cell[CellGroupData[{
+Cell[30507, 808, 2215, 61, 330, "Input",ExpressionUUID->"8a8d083b-bfbc-4b02-97f5-abd08111a6a9"],
+Cell[32725, 871, 707, 17, 112, "Output",ExpressionUUID->"a13cf57e-f4a6-41e5-9991-5cf987ec9d4b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33469, 893, 409, 9, 76, "Input",ExpressionUUID->"489e962f-d6f4-427b-baf5-b12f1a1d8efc"],
+Cell[CellGroupData[{
+Cell[33903, 906, 1384, 33, 140, "Print",ExpressionUUID->"46421685-8cf8-4c76-aecd-8280fbe5ac87"],
+Cell[35290, 941, 1302, 34, 140, "Print",ExpressionUUID->"acbd41c4-607c-4d0f-88ef-54c10ca00d29"],
+Cell[36595, 977, 332, 9, 60, "Print",ExpressionUUID->"f83cbc9a-9d17-4ff5-92a1-d0c9926e99c5"],
+Cell[36930, 988, 1305, 35, 90, "Print",ExpressionUUID->"39fc0b56-63e0-4cc9-95a1-9cb9231dd59f"],
+Cell[38238, 1025, 1431, 34, 138, "Print",ExpressionUUID->"81d03b73-ecf4-4885-9686-87bbfa0472d9"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39718, 1065, 409, 9, 76, "Input",ExpressionUUID->"093ba969-d5e7-47c0-86d4-6f89e1b51a56"],
+Cell[CellGroupData[{
+Cell[40152, 1078, 1844, 39, 140, "Print",ExpressionUUID->"ff45c21a-c4bb-44e0-8a91-3616e6ab0646"],
+Cell[41999, 1119, 1764, 40, 140, "Print",ExpressionUUID->"9c4b20a3-6912-46e9-83d3-6e00eb68d6fe"],
+Cell[43766, 1161, 792, 15, 60, "Print",ExpressionUUID->"9dbeb1bd-8c7b-46b5-911c-7d652f16121f"],
+Cell[44561, 1178, 1767, 41, 90, "Print",ExpressionUUID->"ed47e17c-8481-4dce-a3d8-d93f8cfcc471"],
+Cell[46331, 1221, 1893, 40, 138, "Print",ExpressionUUID->"0066f061-4e3a-4eb7-bd31-48f32c0b6ab5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48273, 1267, 205, 5, 76, "Input",ExpressionUUID->"e307ec7b-62b6-4bdc-8d71-1bd33a1a6de3"],
+Cell[48481, 1274, 231, 5, 86, "Output",ExpressionUUID->"7019e5a4-2b0d-42b0-ae01-6b80a59d5a9c"]
+}, Open  ]],
+Cell[48727, 1282, 234, 5, 232, "Input",ExpressionUUID->"3a761c9a-9450-4d38-9c83-e1d53acb3bd9"],
+Cell[48964, 1289, 149, 3, 130, "Input",ExpressionUUID->"c8146bb2-9743-49c6-8404-6e82d6f7931d"],
+Cell[49116, 1294, 5028, 126, 1266, "Input",ExpressionUUID->"780fc216-2e6b-4c28-a468-f11a0c331dfe"],
+Cell[CellGroupData[{
+Cell[54169, 1424, 430, 9, 76, "Input",ExpressionUUID->"a35f973e-cd11-4d92-bf74-b1ab1488e008"],
+Cell[CellGroupData[{
+Cell[54624, 1437, 1431, 34, 140, "Print",ExpressionUUID->"4cb386c1-38d2-498c-bce1-f8a92f596542"],
+Cell[56058, 1473, 1349, 35, 140, "Print",ExpressionUUID->"2a8a8104-354b-4926-8b6b-a28c86ae915a"],
+Cell[57410, 1510, 1486, 35, 138, "Print",ExpressionUUID->"4ded83ce-0783-4b06-8247-7e894a72f334"]
+}, Open  ]]
+}, Open  ]],
+Cell[58923, 1549, 147, 3, 130, "Input",ExpressionUUID->"a15be07b-d12a-4579-982d-5f3fb9c724b3"],
+Cell[59073, 1554, 206, 4, 180, "Input",ExpressionUUID->"b98030a5-fc82-454a-9e08-6d10ec881410"],
+Cell[59282, 1560, 3556, 87, 956, "Input",ExpressionUUID->"34ea0a1d-de9a-478c-be22-4d38bdadf166"],
+Cell[CellGroupData[{
+Cell[62863, 1651, 363, 9, 130, "Input",ExpressionUUID->"c424ec45-4e9f-4650-a3f7-2396aa105b0c"],
+Cell[63229, 1662, 175, 4, 86, "Output",ExpressionUUID->"b8a487e6-99b4-483c-9491-72022edbe6ce"],
+Cell[63407, 1668, 175, 4, 86, "Output",ExpressionUUID->"0a2868be-a3c5-49df-adca-66e51991ac6c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63619, 1677, 265, 6, 76, "Input",ExpressionUUID->"42c2b234-99ea-48d2-a766-4581b3f3db76"],
+Cell[CellGroupData[{
+Cell[63909, 1687, 412, 9, 60, "Print",ExpressionUUID->"88483758-7463-4885-92a1-0bceefc2f2ec"],
+Cell[64324, 1698, 444, 9, 110, "Print",ExpressionUUID->"37712e1e-8c56-44cb-a679-27a8bd38ca1b"],
+Cell[64771, 1709, 408, 10, 60, "Print",ExpressionUUID->"5af4e7e8-bec8-4b4c-b05c-9f7cef997fbf"],
+Cell[65182, 1721, 451, 10, 60, "Print",ExpressionUUID->"da7f0fbf-0338-4a7f-acdd-9e9f682b4263"],
+Cell[65636, 1733, 460, 11, 60, "Print",ExpressionUUID->"8dc1da3b-3197-4190-bdba-45c574951409"]
+}, Open  ]]
+}, Open  ]],
+Cell[66123, 1748, 147, 3, 130, "Input",ExpressionUUID->"ddc0e07e-d662-4b40-8c94-013f095511c3"],
+Cell[CellGroupData[{
+Cell[66295, 1755, 313, 6, 76, "Input",ExpressionUUID->"02193c32-c568-48d2-af24-53042a25e0de"],
+Cell[CellGroupData[{
+Cell[66633, 1765, 894, 23, 88, "Print",ExpressionUUID->"a7e72ef3-1c4e-4d1a-9dfc-dc64916492d3"],
+Cell[67530, 1790, 915, 24, 140, "Print",ExpressionUUID->"4d2d3348-f81e-451b-8bfb-a4eb9eaec026"],
+Cell[68448, 1816, 332, 9, 60, "Print",ExpressionUUID->"848a8e4b-f1e1-483e-9d6f-b923fff3eceb"],
+Cell[68783, 1827, 918, 24, 90, "Print",ExpressionUUID->"240eef58-c01a-479f-b24a-6c00da6fe70c"],
+Cell[69704, 1853, 1034, 25, 88, "Print",ExpressionUUID->"6dffda05-11a0-4e33-8dfc-e77bad6a8df5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

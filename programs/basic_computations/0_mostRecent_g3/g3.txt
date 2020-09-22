@@ -1,0 +1,6 @@
+g3 stands for "generation 3"
+
+
+
+
+note:  to calculate Magnus integrand functions fxn[t, i] it seems best to use MagnusM4[k] (Apparently, you need k = n+1 for Magnus order n)
